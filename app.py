@@ -1,13 +1,23 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import pickle
+import os
+
 model=pickle.load(open("pipeline.pkl","rb"))
 app=FastAPI()
+
+# Serve static assets (CSS, JS, images)
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
 class EmailRequest(BaseModel):
     text:str
+
 @app.get("/")
 def home():
-    return {"message":"API running"}
+    return FileResponse(os.path.join(static_dir, "index.html"))
 @app.post("/predict")
 def predict_email(data:EmailRequest):
     if not data.text.strip():

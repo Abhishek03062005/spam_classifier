@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spam Classifier — Check if your email is spam</title>
+  <meta name="description" content="AI-powered spam classifier. Paste any email or message to instantly detect if it's spam or legitimate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Ambient background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <main id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">SpamGuard</span>
+      </div>
+      <p class="tagline">AI-powered email spam detection</p>
+    </header>
+
+    <!-- Card -->
+    <section class="card" id="classifier-card">
+      <h1 class="card-title">Is it spam?</h1>
+      <p class="card-subtitle">Paste an email or message below to find out instantly.</p>
+
+      <div class="textarea-wrapper" id="textarea-wrapper">
+        <textarea
+          id="email-input"
+          placeholder="Paste your email or message here…"
+          rows="6"
+          spellcheck="false"
+        ></textarea>
+        <span class="char-count" id="char-count">0</span>
+      </div>
+
+      <button class="btn-primary" id="classify-btn" type="button">
+        <span class="btn-label">Classify</span>
+        <span class="btn-loader" id="btn-loader"></span>
+      </button>
+
+      <!-- Result panel (hidden initially) -->
+      <div class="result-panel hidden" id="result-panel">
+        <div class="result-badge" id="result-badge">
+          <span class="result-icon" id="result-icon"></span>
+          <span class="result-label" id="result-label"></span>
+        </div>
+
+        <div class="confidence-section">
+          <div class="confidence-bar-track">
+            <div class="confidence-bar-fill" id="confidence-bar"></div>
+          </div>
+          <div class="confidence-details">
+            <span class="confidence-pct" id="confidence-pct"></span>
+            <span class="confidence-level" id="confidence-level"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error message -->
+      <p class="error-msg hidden" id="error-msg"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Built by <strong>Abhishek Kumar</strong> · Powered by Logistic Regression &amp; FastAPI</p>
+    </footer>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
