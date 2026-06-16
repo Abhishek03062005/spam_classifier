@@ -10,26 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/style.css" />
 </head>
-<body>
+<body style="background-color: #0b0e17; color: #e8eaf0; font-family: Inter, sans-serif;">
+
   <!-- Ambient background blobs -->
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-  <div class="bg-blob blob-3"></div>
+  <div class="bg-blob blob-1" style="background: radial-gradient(circle, #6c63ff 0%, transparent 70%);"></div>
+  <div class="bg-blob blob-2" style="background: radial-gradient(circle, #ff4f6e 0%, transparent 70%);"></div>
+  <div class="bg-blob blob-3" style="background: radial-gradient(circle, #34d399 0%, transparent 70%);"></div>
 
   <main id="app">
+
     <!-- Header -->
-    <header class="header">
-      <div class="logo">
-        <span class="logo-icon">🛡️</span>
-        <span class="logo-text">SpamGuard</span>
+    <header class="header" style="text-align: center;">
+      <div class="logo" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <span class="logo-icon" style="font-size: 2rem;">🛡️</span>
+        <span class="logo-text" style="font-size: 1.75rem; font-weight: 800; color: #6c63ff;">SpamGuard</span>
       </div>
-      <p class="tagline">AI-powered email spam detection</p>
+      <p class="tagline" style="color: #8b90a0; font-size: 0.95rem;">AI-powered email spam detection</p>
     </header>
 
     <!-- Card -->
-    <section class="card" id="classifier-card">
-      <h1 class="card-title">Is it spam?</h1>
-      <p class="card-subtitle">Paste an email or message below to find out instantly.</p>
+    <section class="card" id="classifier-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 36px 28px;">
+
+      <h1 class="card-title" style="font-size: 1.5rem; font-weight: 700; color: #e8eaf0;">Is it spam?</h1>
+
+      <p class="card-subtitle" style="color: #8b90a0; font-size: 0.9rem;">Paste an email or message below to find out instantly.</p>
 
       <div class="textarea-wrapper" id="textarea-wrapper">
         <textarea
@@ -37,41 +41,43 @@
           placeholder="Paste your email or message here…"
           rows="6"
           spellcheck="false"
+          style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: #e8eaf0; font-size: 0.95rem; padding: 16px 18px;"
         ></textarea>
-        <span class="char-count" id="char-count">0</span>
+        <span class="char-count" id="char-count" style="color: #565b6e; font-size: 0.75rem;">0</span>
       </div>
 
-      <button class="btn-primary" id="classify-btn" type="button">
+      <button class="btn-primary" id="classify-btn" type="button" style="background: linear-gradient(135deg, #6c63ff, #8b5cf6); color: #ffffff; font-size: 1rem; font-weight: 600; border-radius: 10px; padding: 14px 0;">
         <span class="btn-label">Classify</span>
         <span class="btn-loader" id="btn-loader"></span>
       </button>
 
       <!-- Result panel (hidden initially) -->
-      <div class="result-panel hidden" id="result-panel">
-        <div class="result-badge" id="result-badge">
-          <span class="result-icon" id="result-icon"></span>
+      <div class="result-panel hidden" id="result-panel" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px;">
+        <div class="result-badge" id="result-badge" style="font-size: 1.1rem; font-weight: 600; padding: 10px 18px; border-radius: 10px;">
+          <span class="result-icon" id="result-icon" style="font-size: 1.25rem;"></span>
           <span class="result-label" id="result-label"></span>
         </div>
 
         <div class="confidence-section">
-          <div class="confidence-bar-track">
-            <div class="confidence-bar-fill" id="confidence-bar"></div>
+          <div class="confidence-bar-track" style="background: rgba(255,255,255,0.08); height: 8px; border-radius: 99px;">
+            <div class="confidence-bar-fill" id="confidence-bar" style="height: 100%; border-radius: 99px;"></div>
           </div>
-          <div class="confidence-details">
-            <span class="confidence-pct" id="confidence-pct"></span>
-            <span class="confidence-level" id="confidence-level"></span>
+          <div class="confidence-details" style="display: flex; justify-content: space-between;">
+            <span class="confidence-pct" id="confidence-pct" style="font-size: 0.9rem; font-weight: 600; color: #e8eaf0;"></span>
+            <span class="confidence-level" id="confidence-level" style="font-size: 0.8rem; color: #8b90a0;"></span>
           </div>
         </div>
       </div>
 
       <!-- Error message -->
-      <p class="error-msg hidden" id="error-msg"></p>
+      <p class="error-msg hidden" id="error-msg" style="color: #ff4f6e; font-size: 0.85rem;"></p>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <p>Built by <strong>Abhishek Kumar</strong> · Powered by Logistic Regression &amp; FastAPI</p>
+    <footer class="footer" style="text-align: center; font-size: 0.8rem; color: #565b6e;">
+      <p>Built by <strong style="color: #8b90a0;">Abhishek Kumar</strong> · Powered by Logistic Regression &amp; FastAPI</p>
     </footer>
+
   </main>
 
   <script src="/static/script.js"></script>
